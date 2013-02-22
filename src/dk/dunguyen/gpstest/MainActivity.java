@@ -110,36 +110,14 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
 			temp.add((float) acc);
 			temp.add((float) location.getTime());
 			if(provider.equals(gpsProvider)) {
-				if(gpsData.size()!=0){
-					ArrayList<Float> inner = gpsData.get(gpsData.size()-1);
-					if((float) location.getTime()!= inner.get(inner.size()-1))
-					{
-						gpsData.add(temp);
-					}
-				} else {
-					gpsData.add(temp);
-				}
+				gpsData.add(temp);
+
 			} else if (provider.equals(networkProvider)) {
-				if(networkData.size()!=0){
-					ArrayList<Float> inner = networkData.get(networkData.size()-1);
-					if((float) location.getTime()!= inner.get(inner.size()-1))
-					{
-						networkData.add(temp);
-					}
-				} else {
-					networkData.add(temp);
-				}
+				networkData.add(temp);
 			} else if (provider.equals(passiveProvider)) {
-				if(passiveData.size()!=0){
-					ArrayList<Float> inner = passiveData.get(passiveData.size()-1);
-					if((float) location.getTime()!= inner.get(inner.size()-1))
-					{
-						passiveData.add(temp);
-					}
-				} else {
-					passiveData.add(temp);
-				}
+				passiveData.add(temp);
 			}
+
 		} else {
 			providerField.setText("Provider: " + provider);
 			latitudeField.setText("Location not available");
